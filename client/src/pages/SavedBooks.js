@@ -9,7 +9,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 
 const SavedBooks = () => {
   const { loading, data}  = useQuery(GET_ME);
-  const [ deleteBook ] = useMutation(DELETE_BOOK);
+  const { deleteBook }  = useMutation(DELETE_BOOK);
   
   const userData = data?.me || {};
 
@@ -62,14 +62,8 @@ const SavedBooks = () => {
     } catch (err) {
       console.error(err);
     }
-  
-   
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
-    } catch (err) {
-      console.error(err);
-    }
   };
+  
 
   // if data isn't here yet, say so
   if (loading) {
